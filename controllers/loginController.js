@@ -3,6 +3,10 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
+router.get("/", (req, res) => {
+  res.send("hello world...");
+});
+
 router.post("/", async (req, res, next) => {
   try {
     console.log(req.body);

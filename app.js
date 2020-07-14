@@ -12,6 +12,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("build"));
 
+app.use("/api/users", userRouter);
+app.use("/api/login", loginRouter);
+
+// stavi pre ruta ako treba za deploy
+
 let protected = ["transformed.js", "main.css", "favicon.ico"];
 
 app.get("*", (req, res) => {
@@ -25,9 +30,6 @@ app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/build/index.html`);
   }
 });
-
-app.use("/api/users", userRouter);
-app.use("/api/login", loginRouter);
 
 app.use(errorHandler);
 

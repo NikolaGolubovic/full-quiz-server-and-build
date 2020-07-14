@@ -38,10 +38,19 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.get("/scorecard", auth, async (req, res, next) => {
+  try {
+    const decoded = jwt.verify(req.token, process.env.SECRET);
+    const scoreCard = await Score.findOne({ user: decoded.id });
+    res.status(200).json(scoreCard);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.put("/score", auth, async (req, res, next) => {
   const { score } = req.body;
   const decoded = jwt.verify(req.token, process.env.SECRET);
-  const foundUser = await User.findById(decoded.id);
   const foundScore = await Score.findOne({ user: decoded.id });
 
   const updatedInfos = {
@@ -58,7 +67,5 @@ router.put("/score", auth, async (req, res, next) => {
   );
   res.status(200).json(updateScore);
 });
-
-router.post("/score", async (req, res, next) => {});
 
 module.exports = router;

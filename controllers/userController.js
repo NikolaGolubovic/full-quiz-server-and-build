@@ -49,11 +49,13 @@ router.get("/scorecard", auth, async (req, res, next) => {
 });
 
 router.put("/score", auth, async (req, res, next) => {
+  console.log("radi");
   const { score } = req.body;
   const decoded = jwt.verify(req.token, process.env.SECRET);
   const foundScore = await Score.findOne({ user: decoded.id });
 
   const updatedInfos = {
+    lastScore: score,
     maxPoints: foundScore.maxPoints < score ? score : foundScore.maxPoints,
     totalGames: foundScore.totalGames + 1,
     totalPoints: foundScore.totalPoints + score,

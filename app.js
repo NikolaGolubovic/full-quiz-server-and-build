@@ -23,7 +23,7 @@ app.get("*", (req, res) => {
   let path = req.params["0"].substring(1);
 
   if (protected.includes(path)) {
-    // Return the actual file
+    // Return the actual file(s)
     res.sendFile(`${__dirname}/build/${path}`);
   } else {
     // Otherwise, redirect to /build/index.html

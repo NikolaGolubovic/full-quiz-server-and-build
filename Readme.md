@@ -2,7 +2,7 @@
 
 You can play quiz here
 
-https://young-stream-46054.herokuapp.com/
+https://quizitj.herokuapp.com/
 
 You can find raw frontend code here
 

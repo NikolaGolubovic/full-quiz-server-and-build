@@ -1,3 +1,6 @@
+username: user
+password: password
+
 > Full trivia quiz
 
 You can play quiz here

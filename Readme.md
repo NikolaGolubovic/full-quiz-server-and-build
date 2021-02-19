@@ -1,4 +1,4 @@
-username: user
+username: user  
 password: password
 
 > Full trivia quiz
